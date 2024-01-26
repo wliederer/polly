@@ -12,6 +12,7 @@ const useStyles = createUseStyles(() => ({
     margin: '16px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s ease-in-out',
+    position: 'relative',
     '&:hover': {
       transform: 'scale(1.05)',
     },
@@ -26,21 +27,33 @@ const useStyles = createUseStyles(() => ({
 
 const Rolly = (props) => {
   const [showOverlay, setShowOverlay] = useState(false)
+  const [selectedPick, setSelectedPick] = useState('')
+  const [isDisabled, setIsDisabled] = useState(false)
   const classes = useStyles()
 
-  const toggleOverlay = () => {
+  const toggleOverlay = (pick) => {
     setShowOverlay(!showOverlay)
+    setIsDisabled(true)
+    if (pick) setSelectedPick(pick)
   }
   console.log(props)
   return (
     <div className={classes.card}>
       <div className={classes.title}>{props.title}</div>
       {props.picks
-        ? props.picks.map((p) => (
-            <PickButton onClick={toggleOverlay}>{p}</PickButton>
+        ? props.picks.map((p, i) => (
+            <PickButton key={i} disabled={isDisabled} onClick={toggleOverlay}>
+              {p}
+            </PickButton>
           ))
         : null}
-      {showOverlay ? <OverlayCard toggle={toggleOverlay} /> : null}
+      {showOverlay ? (
+        <OverlayCard
+          toggle={toggleOverlay}
+          pick={selectedPick}
+          pickMessage={props.pickMessage}
+        />
+      ) : null}
     </div>
   )
 }

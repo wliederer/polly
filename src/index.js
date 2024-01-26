@@ -8,6 +8,7 @@ root.render(
     <Rolly
       title={'What kind of stickers do you like?'}
       picks={['video game', 'random', 'anime']}
+      pickMessage={'Thankyou for your pick!'}
     />
   </React.StrictMode>,
 )
