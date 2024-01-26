@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { useState } from 'react'
+import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
   button: {
-    margin:"4px",
+    margin: '4px',
     width: '100%',
     padding: '12px',
     borderRadius: '8px',
@@ -17,17 +17,17 @@ const useStyles = createUseStyles({
       backgroundColor: '#a0a0a0', // Even darker color on click
     },
   },
-});
+})
 
 const PickButton = ({ onClick, children }) => {
-  const classes = useStyles();
-  const [selected,setSelected] = useState(false);
+  const classes = useStyles()
+  const [selected, setSelected] = useState(false)
 
   return (
     <button className={classes.button} onClick={onClick}>
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default PickButton;
+export default PickButton

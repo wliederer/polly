@@ -1,7 +1,7 @@
 {
-  "name": "polly",
+  "name": "rolly-polly-polls",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -14,7 +14,8 @@
   "scripts": {
     "build": "npm run clean && rollup -c -w",
     "start": "react-scripts start",
-    "clean": "node ./scripts/clean.js"
+    "clean": "node ./scripts/clean.js",
+    "format": "prettier --write \"src/**/*.js\""
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,7 @@
     "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "del": "^6.0.0",
+    "prettier": "3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^2.79.1",
