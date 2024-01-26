@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
+import { createUseStyles, useTheme } from 'react-jss'
 import closex from './svg/closex.svg'
 
-const useStyles = createUseStyles(() => ({
+const useStyles = createUseStyles((theme) => ({
   overlay: {
     position: 'absolute',
     top: 0,
@@ -42,7 +42,8 @@ const useStyles = createUseStyles(() => ({
 }))
 
 const OverlayCard = ({ pickMessage, toggle, pick }) => {
-  const classes = useStyles()
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
     <div className={classes.overlay}>

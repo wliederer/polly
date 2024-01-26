@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
+import React, { useEffect, useState } from 'react'
+import { createUseStyles, useTheme } from 'react-jss'
 import PickButton from './PickButton'
 import OverlayCard from './OverlayCard'
 
-const useStyles = createUseStyles(() => ({
+const useStyles = createUseStyles((theme) => ({
   card: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: '300px',
-    border: '1px solid #ccc',
+    border: `1px solid ${theme.colors.border}`,
     borderRadius: '8px',
     padding: '16px',
     margin: '16px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    boxShadow: theme.shadows.shadow3,
     transition: 'transform 0.2s ease-in-out',
     position: 'relative',
+    background: theme.colors.background,
     '&:hover': {
       transform: 'scale(1.05)',
     },
@@ -22,26 +26,33 @@ const useStyles = createUseStyles(() => ({
     fontWeight: 'bold',
     marginBottom: '8px',
     textAlign: 'center',
+    fontFamily: theme.fontFamily,
+    color: theme.colors.text,
   },
 }))
 
-const Rolly = (props) => {
+const App = ({ title, picks, pickMessage, onLoad }) => {
   const [showOverlay, setShowOverlay] = useState(false)
   const [selectedPick, setSelectedPick] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
-  const classes = useStyles()
+  const theme = useTheme()
+  const classes = useStyles({ theme })
+
+  useEffect(() => {
+    console.log('Rolly Loaded')
+    onLoad({ title, picks, pickMessage })
+  }, [])
 
   const toggleOverlay = (pick) => {
     setShowOverlay(!showOverlay)
     setIsDisabled(true)
     if (pick) setSelectedPick(pick)
   }
-  console.log(props)
   return (
     <div className={classes.card}>
-      <div className={classes.title}>{props.title}</div>
-      {props.picks
-        ? props.picks.map((p, i) => (
+      <div className={classes.title}>{title}</div>
+      {picks
+        ? picks.map((p, i) => (
             <PickButton key={i} disabled={isDisabled} onClick={toggleOverlay}>
               {p}
             </PickButton>
@@ -51,11 +62,11 @@ const Rolly = (props) => {
         <OverlayCard
           toggle={toggleOverlay}
           pick={selectedPick}
-          pickMessage={props.pickMessage}
+          pickMessage={pickMessage}
         />
       ) : null}
     </div>
   )
 }
 
-export default Rolly
+export default App

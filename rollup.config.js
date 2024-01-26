@@ -9,7 +9,7 @@ import pkg from './package.json'
 import svgr from '@svgr/rollup'
 
 export default {
-  input: './src/lib/App.js',
+  input: './src/lib/index.js',
   output: [
     {
       file: pkg.main,

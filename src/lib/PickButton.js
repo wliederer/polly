@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
+import React, { useEffect, useState } from 'react'
+import { createUseStyles, useTheme } from 'react-jss'
 
 const useStyles = createUseStyles((theme) => ({
   button: {
@@ -7,9 +7,11 @@ const useStyles = createUseStyles((theme) => ({
     width: '100%',
     padding: '12px',
     borderRadius: '8px',
-    cursor: 'pointer',
+    border: `1px solid ${theme.colors.border}`,
+    cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
     transition: 'background-color 0.3s ease',
-    backgroundColor: ({ selected }) => (selected ? '#fcba03' : '#e0e0e0'),
+    backgroundColor: ({ selected }) =>
+      selected ? theme.colors.picked : theme.colors.notPicked,
     '&:hover': {
       backgroundColor: '#c0c0c0', // Darker color on hover
     },
@@ -17,13 +19,19 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: '#a0a0a0', // Even darker color on click
     },
   },
+
+  text: {
+    fontFamily: theme.fontFamily,
+    color: theme.colors.text,
+  },
 }))
 
 const PickButton = ({ onClick, children, disabled }) => {
   const [selected, setSelected] = useState(false)
-  const styleProps = { selected }
-  const classes = useStyles({ ...styleProps })
-  console.log(disabled)
+  const styleProps = { selected, disabled }
+  const theme = useTheme()
+  const classes = useStyles({ ...styleProps, theme })
+
   return (
     <button
       className={classes.button}
@@ -31,9 +39,9 @@ const PickButton = ({ onClick, children, disabled }) => {
         onClick(children)
         setSelected(true)
       }}
-      disabled={disabled}
+      disabled={selected ? false : disabled}
     >
-      {children}
+      <div className={classes.text}>{children}</div>
     </button>
   )
 }
