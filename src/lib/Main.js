@@ -3,11 +3,11 @@ import App from './App'
 import ThemeProvider from './theme/ThemeProvider'
 // import { buildTheme } from './theme/theme'
 
-const Rolly = ({ title, picks, pickMessage, onLoad }) => {
+const Rolly = ({ title, picks, pickMessage, onLoad, theme }) => {
   //   const [theme, setTheme] = useState(buildTheme('default')) custom themes someday
 
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <App
         title={title}
         picks={picks}

@@ -11,6 +11,7 @@ const Test = () => {
       picks={['video game', 'random', 'anime']}
       pickMessage={'Thankyou for your pick!'}
       onLoad={onLoad}
+      theme={'royal'}
     />
   )
 }

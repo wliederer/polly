@@ -13,10 +13,11 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: ({ selected }) =>
       selected ? theme.colors.picked : theme.colors.notPicked,
     '&:hover': {
-      backgroundColor: '#c0c0c0', // Darker color on hover
+      backgroundColor: ({ disabled }) =>
+        disabled ? null : theme.colors.picked,
     },
     '&:active': {
-      backgroundColor: '#a0a0a0', // Even darker color on click
+      // backgroundColor: '#a0a0a0',
     },
   },
 
