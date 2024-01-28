@@ -1,11 +1,11 @@
 export const buildTheme = (theme) => {
   const colors = {
     default: {
-      border: '#1E5281',
-      text: '#303b32',
-      notPicked: '#d98b73',
-      picked: '#c24a25',
-      background: 'rgba(217, 139, 115,0.8)',
+      border: '#182d66',
+      text: '#260503',
+      notPicked: '#666018',
+      picked: '#423f29',
+      background: 'rgba(102, 96, 24,0.8)',
     },
     drab: {
       border: '#1E5281',
@@ -27,6 +27,13 @@ export const buildTheme = (theme) => {
       notPicked: '#90bef5',
       picked: '#a8a872',
       background: 'rgba(144, 190, 245,0.8)',
+    },
+    toys: {
+      border: '#696138',
+      text: '#396e57',
+      notPicked: '#59396e',
+      picked: '#852019',
+      background: 'rgba(89, 57, 110,0.8)',
     },
   }
 

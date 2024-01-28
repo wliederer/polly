@@ -31,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-const App = ({ title, picks, pickMessage, onLoad }) => {
+const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
   const [showOverlay, setShowOverlay] = useState(false)
   const [selectedPick, setSelectedPick] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
@@ -39,13 +39,13 @@ const App = ({ title, picks, pickMessage, onLoad }) => {
   const classes = useStyles({ theme })
 
   useEffect(() => {
-    console.log('Rolly Loaded')
-    onLoad({ title, picks, pickMessage })
+    onLoad('rollyLoaded')
   }, [])
 
   const toggleOverlay = (pick) => {
     setShowOverlay(!showOverlay)
     setIsDisabled(true)
+    onPick({ title, pick })
     if (pick) setSelectedPick(pick)
   }
   return (

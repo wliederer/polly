@@ -29,7 +29,7 @@ const useStyles = createUseStyles((theme) => ({
     outline: 'none',
   },
   overlayContent: {
-    background: 'white',
+    background: theme.colors.background,
     borderRadius: '8px',
     padding: '20px',
     textAlign: 'center',
@@ -38,6 +38,8 @@ const useStyles = createUseStyles((theme) => ({
   },
   message: {
     padding: 8,
+    fontFamily: theme.fontFamily,
+    color: theme.colors.text,
   },
 }))
 
@@ -53,7 +55,7 @@ const OverlayCard = ({ pickMessage, toggle, pick }) => {
         </button>
         <div className={classes.message}>
           <div>{pickMessage}</div>
-          <div>{pick}</div>
+          {/* <div>{pick}</div> */}
         </div>
       </div>
     </div>
