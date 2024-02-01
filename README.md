@@ -44,16 +44,13 @@ Required Props:
 `onLoad`
 `onPick`
 
-```javascript
-<Rolly
-  title={'Whats your favorite color?'} //Title displayed on the widget
-  picks={['Green', 'Blue', 'Yellow', 'Other']} //Picks displayed on the widget passed as an array of strings
-  pickMessage={'Thankyou for your pick!  We have received your feedback!'} //Message displayed on a pick
-  onLoad={onLoad} //Function called on load with available props passed. Right now its just the string "rollyLoaded"
-  onPick={onPick} //Function to call on a pick data passed will be `{ title, pick }`
-  theme={'default'} //theme default
+title: Title displayed on the widget
+picks: Picks displayed on the widget passed as an array of strings
+pickMessage: Message displayed on a pick
+onLoad: Function called on load with available props passed. Right now its just the string "rollyLoaded"
+onPick: Function to call on a pick data passed will be `{ title, pick }`
+theme: theme default
 />
-```
 
 Available Themes:
 `default` `drab` `sienna` `royal` `toys` `betsy`
