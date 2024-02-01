@@ -63,7 +63,10 @@ const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
         : null}
       {showOverlay ? (
         <OverlayCard
-          toggle={toggleOverlay}
+          toggle={() => {
+            setShowOverlay(!showOverlay)
+            setIsDisabled(true)
+          }}
           pick={selectedPick}
           pickMessage={pickMessage}
         />
