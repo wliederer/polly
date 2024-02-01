@@ -15,7 +15,7 @@ const Test = () => {
       pickMessage={'Thankyou for your pick!  We have received your feedback!'}
       onLoad={onLoad}
       onPick={onPick}
-      theme={'default'}
+      theme={'betsy'}
     />
   )
 }

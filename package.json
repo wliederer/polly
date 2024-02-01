@@ -1,6 +1,6 @@
 {
   "name": "rolly-polly-polls",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.23.9",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@rollup/plugin-commonjs": "^25.0.7",

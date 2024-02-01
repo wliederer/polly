@@ -39,6 +39,9 @@ const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
   const classes = useStyles({ theme })
 
   useEffect(() => {
+    if (!title || !picks || !onLoad || !onPick) {
+      throw new Error('Missing props')
+    }
     onLoad('rollyLoaded')
   }, [])
 

@@ -35,6 +35,13 @@ export const buildTheme = (theme) => {
       picked: '#852019',
       background: 'rgba(89, 57, 110,0.8)',
     },
+    betsy: {
+      border: '#3140af',
+      text: 'black',
+      notPicked: '#dedede',
+      picked: '#ccebff',
+      background: 'rgba(247, 247, 247,1)',
+    },
   }
 
   const fontFamily = "'Outfit', sans-serif"
