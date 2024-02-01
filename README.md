@@ -44,15 +44,13 @@ Required Props:
 `onLoad`
 `onPick`
 
-# Widget Information
-
 ## Title
 
 Title displayed on the widget
 
 ## Picks
 
-- Picks displayed on the widget passed as an array of strings
+Picks displayed on the widget passed as an array of strings
 
 ## Pick Message
 
