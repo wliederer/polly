@@ -44,13 +44,31 @@ Required Props:
 `onLoad`
 `onPick`
 
-title: Title displayed on the widget
-picks: Picks displayed on the widget passed as an array of strings
-pickMessage: Message displayed on a pick
-onLoad: Function called on load with available props passed. Right now its just the string "rollyLoaded"
-onPick: Function to call on a pick data passed will be `{ title, pick }`
-theme: theme default
-/>
+# Widget Information
+
+## Title
+
+Title displayed on the widget
+
+## Picks
+
+- Picks displayed on the widget passed as an array of strings
+
+## Pick Message
+
+Message displayed on a pick
+
+## onLoad
+
+Function called on load with available props passed. Right now it's just the string "rollyLoaded"
+
+## onPick
+
+Function to call on a pick. Data passed will be `{ title, pick }`
+
+## Theme
+
+Theme default
 
 Available Themes:
 `default` `drab` `sienna` `royal` `toys` `betsy`
