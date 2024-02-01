@@ -5,7 +5,7 @@ A decoupled widget designed to allow voting on a Question with Pick options.
 ## Installation
 
 ```
-npm install ai-speak
+npm install rolly-polly-polls
 ```
 
 ## Examlpe usage
