@@ -55,7 +55,7 @@ Title displayed on the widget
 
 ## Picks
 
-Picks displayed on the widget passed as an array of strings
+Picks displayed on the widget passed as an array of pick objects defined above
 
 ## Pick Message
 
