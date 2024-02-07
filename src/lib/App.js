@@ -29,12 +29,24 @@ const useStyles = createUseStyles((theme) => ({
     fontFamily: theme.fontFamily,
     color: theme.colors.text,
   },
+  count: {
+    fontSize: '14px',
+    textAlign: 'center',
+    fontFamily: theme.fontFamily,
+    color: theme.colors.text,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'right',
+  },
 }))
 
 const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
   const [showOverlay, setShowOverlay] = useState(false)
   const [selectedPick, setSelectedPick] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
+  const [totalCount, setTotalCount] = useState(
+    picks.reduce((total, pick) => total + pick.count, 0),
+  )
   const theme = useTheme()
   const classes = useStyles({ theme })
 
@@ -45,19 +57,25 @@ const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
     onLoad('rollyLoaded')
   }, [])
 
-  const toggleOverlay = (pick) => {
-    setShowOverlay(!showOverlay)
-    setIsDisabled(true)
+  const onClick = (pick) => {
+    setTotalCount(totalCount + 1)
     onPick({ title, pick })
+    setIsDisabled(true)
     if (pick) setSelectedPick(pick)
   }
   return (
     <div className={classes.card}>
       <div className={classes.title}>{title}</div>
-      {picks
+      {picks && totalCount >= 0
         ? picks.map((p, i) => (
-            <PickButton key={i} disabled={isDisabled} onClick={toggleOverlay}>
-              {p}
+            <PickButton
+              key={i}
+              isDisabled={isDisabled}
+              onClick={onClick}
+              count={p.count}
+              totalCount={totalCount}
+            >
+              {p.pickOption}
             </PickButton>
           ))
         : null}
@@ -72,6 +90,8 @@ const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
           pickMessage={pickMessage}
         />
       ) : null}
+
+      <div className={classes.count}>Total Votes {totalCount}</div>
     </div>
   )
 }

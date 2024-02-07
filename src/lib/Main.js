@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import App from './App'
 import ThemeProvider from './theme/ThemeProvider'
 // import { buildTheme } from './theme/theme'

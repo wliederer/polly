@@ -2,46 +2,64 @@ import React, { useEffect, useState } from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
 
 const useStyles = createUseStyles((theme) => ({
+  '@keyframes growRight': {
+    from: { width: 0 },
+    to: { width: ({ result }) => `${result}%` },
+  },
   button: {
+    height: '30px',
+    display: 'flex',
+    alignItems: 'center',
     margin: '4px',
     width: '100%',
-    padding: '12px',
+    padding: '0',
+    overFlow: 'hidden',
     borderRadius: '8px',
     border: `1px solid ${theme.colors.border}`,
-    cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
-    transition: 'background-color 0.3s ease',
-    backgroundColor: ({ selected }) =>
-      selected ? theme.colors.picked : theme.colors.notPicked,
-    '&:hover': {
-      backgroundColor: ({ disabled }) =>
-        disabled ? null : theme.colors.picked,
-    },
-    '&:active': {
-      // backgroundColor: '#a0a0a0',
-    },
+    cursor: ({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer'),
+  },
+  bar: {
+    backgroundColor: theme.colors.picked,
+    height: '28px',
+    animation: `$growRight 1s ease;`,
+    width: ({ result }) => `${result}%`,
+    borderRadius: '8px',
   },
 
   text: {
     fontFamily: theme.fontFamily,
     color: theme.colors.text,
+    left: '10%',
+    position: 'absolute',
   },
 }))
 
-const PickButton = ({ onClick, children, disabled }) => {
+const PickButton = ({ onClick, children, isDisabled, count, totalCount }) => {
   const [selected, setSelected] = useState(false)
-  const styleProps = { selected, disabled }
+  const [pickCount, setPickCount] = useState(count)
+  const styleProps = {
+    selected,
+    isDisabled,
+    result: (pickCount / totalCount) * 100,
+  }
   const theme = useTheme()
   const classes = useStyles({ ...styleProps, theme })
 
   return (
     <button
+      id={children}
       className={classes.button}
-      onClick={() => {
-        onClick(children)
+      onClick={(e) => {
+        e.preventDefault()
+        const but = document.getElementById(children)
+        but.setAttribute('disabled', true)
+        onClick({ pickOption: children, count: pickCount + 1 })
         setSelected(true)
+        setPickCount(pickCount + 1)
       }}
-      disabled={selected ? false : disabled}
+      disabled={isDisabled}
     >
+      {selected ? <div className={classes.bar}></div> : null}
       <div className={classes.text}>{children}</div>
     </button>
   )
