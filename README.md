@@ -25,7 +25,12 @@ const Example = () => {
   return (
     <Rolly
       title={'Whats your favorite color?'}
-      picks={['Green', 'Blue', 'Yellow', 'Other']}
+      picks={[
+        { pickOption: 'Green', count: 0 },
+        { pickOption: 'Blue', count: 0 },
+        { pickOption: 'Yellow', count: 0 },
+        { pickOpion: 'Other', count: 0 },
+      ]}
       pickMessage={'Thankyou for your pick!  We have received your feedback!'}
       onLoad={onLoad}
       onPick={onPick}
