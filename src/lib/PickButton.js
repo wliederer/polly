@@ -19,7 +19,8 @@ const useStyles = createUseStyles((theme) => ({
     cursor: ({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer'),
   },
   bar: {
-    backgroundColor: theme.colors.picked,
+    backgroundColor: ({ selected }) =>
+      selected ? theme.colors.border : theme.colors.picked,
     height: '28px',
     animation: `$growRight 1s ease;`,
     width: ({ result }) => `${result}%`,
@@ -59,7 +60,7 @@ const PickButton = ({ onClick, children, isDisabled, count, totalCount }) => {
       }}
       disabled={isDisabled}
     >
-      {selected ? <div className={classes.bar}></div> : null}
+      {isDisabled ? <div className={classes.bar}></div> : null}
       <div className={classes.text}>{children}</div>
     </button>
   )
