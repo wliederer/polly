@@ -82,7 +82,6 @@ const App = ({ title, picks, pickMessage, onLoad, onPick }) => {
       {showOverlay ? (
         <OverlayCard
           toggle={() => {
-            console.log('toggled')
             setShowOverlay(!showOverlay)
             setIsDisabled(true)
           }}

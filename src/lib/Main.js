@@ -4,7 +4,7 @@ import ThemeProvider from './theme/ThemeProvider'
 // import { buildTheme } from './theme/theme'
 
 const Rolly = ({ title, picks, pickMessage, onLoad, theme, onPick }) => {
-  //   const [theme, setTheme] = useState(buildTheme('default')) custom themes someday
+  //   const [theme, setTheme] = useState(buildTheme('default')) TODO: custom themes someday
 
   return (
     <ThemeProvider theme={theme}>
